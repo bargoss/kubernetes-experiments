@@ -3,10 +3,11 @@ kind: Deployment
 metadata:
   name: mongodb-deployment
   labels:
-    app: mongodb
+    app: mongodb # <-- this is the name of the app
 spec:
   replicas: 1
   selector:
+    # this field is useful for filtering out pods that are not part of the deployment
     matchLabels:
       app: mongodb
   template:
@@ -34,7 +35,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mongodb-service
+  name: mongodb-service # <-- this is useful for referencing the service
 spec:
   selector:
     app: mongodb
